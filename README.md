@@ -46,3 +46,9 @@ PostgreSQL initializes from `server/db/init.sql`. The initial warden is `warden@
 Images are represented in this first iteration by an optional attachment URL. The student community board does not expose those attachments.
 
 The API integration tests require the local API to be running with the configured `.env`; run `npm test` from `server`. The client production bundle can be checked with `npm run build` from `client`. Configure production secrets and HTTPS before deployment.
+
+## Git branching workflow
+
+- `main` is the stable, production-ready branch.
+- `develop` is the integration branch; completed work is merged here before release to `main`.
+- Create short-lived branches from `develop` using `feature/feature-name` for features, `fix/bug-name` for bug fixes, and `docs/documentation-name` for documentation changes. Merge finished branches back into `develop` through review; merge a release from `develop` into `main` when it is ready.
