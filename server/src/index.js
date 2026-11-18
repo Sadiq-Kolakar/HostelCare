@@ -10,7 +10,7 @@ const { Pool } = pg;
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 const app = express();
 const PORT = process.env.PORT || 4000;
-const SECRET = process.env.JWT_SECRET || 'development-only-secret-change-me';
+const SECRET = process.env.JWT_SECRET;
 app.use(helmet());
 app.use(cors({ origin: true }));
 app.use(express.json({ limit: '1mb' }));
@@ -37,7 +37,7 @@ app.get('/api/health', async (_req, res) => {
 
 async function ensureWarden() {
   if (!process.env.WARDEN_PASSWORD || process.env.WARDEN_PASSWORD.length < 12) throw new Error('Set WARDEN_PASSWORD to at least 12 characters');
-  if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) throw new Error('Set JWT_SECRET to at least 32 characters');
+  if (!SECRET || SECRET.length < 32) throw new Error('JWT_SECRET must be set to at least 32 characters');
   const email = 'warden@hcms.local';
   const exists = await query('SELECT id FROM users WHERE email=$1', [email]);
   if (!exists.rowCount) {
