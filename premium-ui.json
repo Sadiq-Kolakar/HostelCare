@@ -1,0 +1,14 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["client/src"],
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": ["Select/Listbox", "Form", "Scrollbar", "Toast", "CRUD"],
+  "ownership": {
+    "Select/Listbox": "native",
+    "Scrollbar": "global"
+  },
+  "evidence": {
+    "design": "DESIGN.md",
+    "uxContract": "UX-CONTRACT.md"
+  }
+}
